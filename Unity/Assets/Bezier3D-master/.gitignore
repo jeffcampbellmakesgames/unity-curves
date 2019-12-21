@@ -1,0 +1,15 @@
+
+\.vs/
+
+Library/
+
+Temp/
+
+*.sln
+
+*.csproj
+
+Bezier3D\.userprefs
+
+README.md.meta
+LICENSE.md.meta
