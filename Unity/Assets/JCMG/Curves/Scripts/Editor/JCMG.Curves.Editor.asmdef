@@ -1,0 +1,17 @@
+{
+    "name": "JCMG.Curves.Editor",
+    "references": [
+        "GUID:466f8dfa7a6bcc34f8b53de55b1bbd94"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
