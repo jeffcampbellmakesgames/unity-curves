@@ -15,14 +15,17 @@ MonoBehaviour:
   packageSourcePaths:
   - Assets/JCMG
   packageIgnorePaths: []
-  packageDestinationPath: 
+  packageDestinationPath: ../../unity-curves-release
   legacyPackageDestinationPath: ../Builds
-  packageName: curves.jeffcampbellmakesgames.com
+  packageName: com.jeffcampbellmakesgames.curves
   displayName: JCMG Curves
-  packageVersion: 0.1.0
+  packageVersion: 1.0.0
   unityVersion: 2019.3
-  description: 
+  description: JCMG Curves is a 3D Bezier curve library focused on ease of use in
+    both its API and Unity Editor integration.
   category: 
-  keywords: []
+  keywords:
+  - Curve
+  - Curves
   dependencies: []
   _id: 7321978f-bf2f-4983-8a03-e0b53e9137d6
