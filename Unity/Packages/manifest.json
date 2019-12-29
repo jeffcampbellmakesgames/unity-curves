@@ -2,10 +2,9 @@
   "dependencies": {
     "com.jeffcampbellmakesgames.packagetools": "https://github.com/jeffcampbellmakesgames/unity-package-tools.git#release/stable",
     "com.unity.ext.nunit": "1.0.0",
-    "com.unity.ide.rider": "1.0.8",
-    "com.unity.ide.vscode": "1.0.7",
-    "com.unity.package-manager-ui": "2.2.0",
-    "com.unity.test-framework": "1.0.18",
+    "com.unity.ide.rider": "1.1.4",
+    "com.unity.ide.vscode": "1.1.3",
+    "com.unity.test-framework": "1.1.3",
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.ugui": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
@@ -42,8 +41,8 @@
   },
   "lock": {
     "com.jeffcampbellmakesgames.packagetools": {
-      "hash": "feaded99c976be564b7e52d2a47fed249e94bddd",
-      "revision": "release/stable"
+      "revision": "release/stable",
+      "hash": "feaded99c976be564b7e52d2a47fed249e94bddd"
     }
   }
 }
