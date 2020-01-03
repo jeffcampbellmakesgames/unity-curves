@@ -4,10 +4,10 @@ using UnityEditor;
 namespace JCMG.Curves.Editor
 {
 	[CustomEditor(typeof(Bezier3DSpline))]
-	internal sealed class Bezier3DSplineInspector : UnityEditor.Editor
+	public sealed class Bezier3DSplineInspector : UnityEditor.Editor
 	{
 		#pragma warning disable 0649
-		public static event Action<IReadOnly3DSplineData> SplineUpdated;
+		public event Action<IReadOnly3DSplineData> SplineUpdated;
 		#pragma warning restore 0649
 
 		private Bezier3DSpline _spline;
