@@ -7,7 +7,7 @@ namespace JCMG.Curves.Editor
 	/// <summary>
 	/// Helper methods for drawing in the scene
 	/// </summary>
-	internal static class SceneGUITools
+	public static class SceneGUITools
 	{
 		public static void DrawCurveLinesHandles(IBezier3DSplineData splineData, Transform transform = null)
 		{
