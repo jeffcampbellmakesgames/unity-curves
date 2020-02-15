@@ -61,9 +61,17 @@ namespace JCMG.Curves.Editor
 
 		public static void DrawCurveOrientations(IBezier3DSplineData splineData)
 		{
+			var sceneViewCameraPosition = SceneView.lastActiveSceneView.camera.transform.position;
+			var maxViewDistance = CurvePreferences.MaximumViewDistance;
+
 			for (var dist = 0f; dist < splineData.TotalLength; dist += 1)
 			{
 				var point = splineData.GetPosition(dist);
+
+				if (Vector3.Distance(sceneViewCameraPosition, point) > maxViewDistance)
+				{
+					continue;
+				}
 
 				// Draw Up Vector
 				var up = splineData.GetUp(dist);
