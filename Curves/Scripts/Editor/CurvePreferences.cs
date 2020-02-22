@@ -13,8 +13,22 @@ namespace JCMG.Curves.Editor
 		/// </summary>
 		public static bool IsDebugEnabled
 		{
-			get { return GetBoolPref(ENABLE_DEBUG_PREF, ENABLE_DEBUG_DEFAULT); }
-			set { EditorPrefs.SetBool(ENABLE_DEBUG_PREF, value); }
+			get
+			{
+				if (!_isDebugEnabled.HasValue)
+				{
+					_isDebugEnabled = GetBoolPref(ENABLE_DEBUG_PREF, ENABLE_DEBUG_DEFAULT);
+				}
+
+				return _isDebugEnabled.Value;
+
+			}
+			set
+			{
+				_isDebugEnabled = value;
+
+				EditorPrefs.SetBool(ENABLE_DEBUG_PREF, value);
+			}
 		}
 
 		/// <summary>
@@ -22,15 +36,73 @@ namespace JCMG.Curves.Editor
 		/// </summary>
 		public static bool ShouldVisualizeRotation
 		{
-			get { return GetBoolPref(SHOW_ROTATION_PREF, SHOW_ROTATION_DEFAULT); }
-			set { EditorPrefs.SetBool(SHOW_ROTATION_PREF, value); }
+			get
+			{
+				if(!_shouldVisualizeRotation.HasValue)
+				{
+					_shouldVisualizeRotation = GetBoolPref(SHOW_ROTATION_PREF, SHOW_ROTATION_DEFAULT);
+				}
+
+				return _shouldVisualizeRotation.Value;
+			}
+			set
+			{
+				_shouldVisualizeRotation = value;
+
+				EditorPrefs.SetBool(SHOW_ROTATION_PREF, value);
+			}
 		}
 
+		/// <summary>
+		/// Returns true if handle movement should be mirrored, otherwise false.
+		/// </summary>
 		public static bool ShouldMirrorHandleMovement
 		{
-			get { return GetBoolPref(MIRROR_HANDLE_MOVEMENT_PREF, MIRROR_HANDLE_MOVEMENT_DEFAULT); }
-			set { EditorPrefs.SetBool(MIRROR_HANDLE_MOVEMENT_PREF, value); }
+			get
+			{
+				if (!_shouldMirrorHandleMovement.HasValue)
+				{
+					_shouldMirrorHandleMovement = GetBoolPref(MIRROR_HANDLE_MOVEMENT_PREF, MIRROR_HANDLE_MOVEMENT_DEFAULT);
+				}
+
+				return _shouldMirrorHandleMovement.Value;
+			}
+			set
+			{
+				_shouldMirrorHandleMovement = value;
+
+				EditorPrefs.SetBool(MIRROR_HANDLE_MOVEMENT_PREF, value);
+			}
 		}
+
+		/// <summary>
+		/// The maximum distance from the SceneView camera at which editor graphics should be drawn for the curve before
+		/// being culled.
+		/// </summary>
+		public static float MaximumViewDistance
+		{
+			get
+			{
+				if (!_maximumViewDistance.HasValue)
+				{
+					_maximumViewDistance = GetFloatPref(MAX_VIEW_DISTANCE_PREF, MAX_VIEW_DISTANCE_DEFAULT);
+				}
+
+				return _maximumViewDistance.Value;
+			}
+			set
+			{
+				_maximumViewDistance = value;
+
+				EditorPrefs.SetFloat(MAX_VIEW_DISTANCE_PREF, value);
+			}
+		}
+
+		// Caching layer
+		private static bool? _isDebugEnabled;
+		private static bool? _shouldVisualizeRotation;
+		private static bool? _shouldMirrorHandleMovement;
+		private static float? _maximumViewDistance;
 
 		// UI
 		private const string PREFERENCES_TITLE_PATH = "Preferences/JCMG Curves";
@@ -49,10 +121,12 @@ namespace JCMG.Curves.Editor
 		private const string SHOW_ROTATION_PREF = "JCMG.Curves.ShowRotationVisualization";
 		private const string ENABLE_DEBUG_PREF = "JCMG.Curves.EnableDebug";
 		private const string MIRROR_HANDLE_MOVEMENT_PREF = "JCMG.Curves.MirrorHandleMovement";
+		private const string MAX_VIEW_DISTANCE_PREF = "JCMG.Curves.MaximumViewDistance";
 
 		private const bool SHOW_ROTATION_DEFAULT = true;
 		private const bool ENABLE_DEBUG_DEFAULT = true;
 		private const bool MIRROR_HANDLE_MOVEMENT_DEFAULT = true;
+		private const float MAX_VIEW_DISTANCE_DEFAULT = 200f;
 
 		static CurvePreferences()
 		{
@@ -131,6 +205,25 @@ namespace JCMG.Curves.Editor
 					SceneView.RepaintAll();
 				}
 			}
+
+			// Max View Distance
+			EditorGUILayout.Space();
+			EditorGUILayout.HelpBox(
+				"The maximum distance at which the curve orientation and other secondary graphics will be drawn in the " +
+				"SceneView.",
+				MessageType.Info);
+
+			GUI.changed = false;
+			using (new EditorGUILayout.HorizontalScope())
+			{
+				EditorGUILayout.LabelField("Maximum View Distance", MAX_WIDTH);
+				var newViewDistance = Mathf.Max(0, EditorGUILayout.FloatField(MaximumViewDistance, MAX_WIDTH));
+				if (GUI.changed)
+				{
+					MaximumViewDistance = newViewDistance;
+					SceneView.RepaintAll();
+				}
+			}
 		}
 
 		/// <summary>
@@ -147,6 +240,22 @@ namespace JCMG.Curves.Editor
 			}
 
 			return EditorPrefs.GetBool(key);
+		}
+
+		/// <summary>
+		/// Returns the current float preference; if none exists, the default is set and returned.
+		/// </summary>
+		/// <param name="key"></param>
+		/// <param name="defaultValue"></param>
+		/// <returns></returns>
+		private static float GetFloatPref(string key, float defaultValue)
+		{
+			if (!EditorPrefs.HasKey(key))
+			{
+				EditorPrefs.SetFloat(key, defaultValue);
+			}
+
+			return EditorPrefs.GetFloat(key);
 		}
 	}
 }
