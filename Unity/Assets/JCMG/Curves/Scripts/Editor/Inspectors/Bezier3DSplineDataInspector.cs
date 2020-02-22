@@ -5,7 +5,7 @@ using UnityEngine;
 namespace JCMG.Curves.Editor
 {
 	[CustomEditor(typeof(Bezier3DSplineData))]
-	internal sealed class Bezier3DSplineDataInspector : UnityEditor.Editor
+	public sealed class Bezier3DSplineDataInspector : UnityEditor.Editor
 	{
 		/// <summary>
 		/// Get or sets whether or not this inspector should be drawing the scene GUI. Default is true.
@@ -32,7 +32,7 @@ namespace JCMG.Curves.Editor
 		}
 
 		#pragma warning disable 0649
-		public static event Action<IReadOnly3DSplineData> SplineUpdated;
+		public event Action<IReadOnly3DSplineData> SplineUpdated;
 		#pragma warning restore 0649
 
 		private bool _shouldDrawSceneGUI;
