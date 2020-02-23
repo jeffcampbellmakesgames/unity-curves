@@ -1,4 +1,5 @@
 # JCMG Curves
+[![openupm](https://img.shields.io/npm/v/com.jeffcampbellmakesgames.curves?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.jeffcampbellmakesgames.curves/)
 
 ## About
 
@@ -14,11 +15,19 @@ The primary difference between these two options is that `Bezier3DSpline`' `Tran
 
 This library was originally cloned from https://github.com/Siccity/Bezier3D and has been refactored and enhanced to include a simpler API, better readability, additional features, and several bug fixes. One of the key features I wanted to maintain that distinguished it from other similar libraries was the way that it cached and stored points along the curve so that it was possible to get a position or rotation along the curve at a set distance of the curve's total length rather than a normalized value of 0-1 over the entire length. This makes it possible to navigate along the spline based on a constant speed and is not affected by Bezier segments of differing lengths.
 
-## Importing JCMG Curves
+## Installing JCMG Curves
 
-Using this library in your project can be done in two ways:
-* **Releases:** The latest release can be found [here](https://github.com/jeffcampbellmakesgames/unity-curves/releases) as a UnityPackage file that can be downloaded and imported directly into your project's Assets folder.
-* **Package:** Using the native Unity Package Manager introduced in 2017.2, you can add this library as a package by modifying your `manifest.json` file found at `/ProjectName/Packages/manifest.json` to include it as a dependency. See the example below on how to reference it.
+Using this library in your project can be done in three ways:
+
+### Install via OpenUPM
+The package is available on the [openupm registry](https://openupm.com/). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+
+```
+openupm add com.jeffcampbellmakesgames.curves
+```
+
+### Install via GIT URL
+Using the native Unity Package Manager introduced in 2017.2, you can add this library as a package by modifying your `manifest.json` file found at `/ProjectName/Packages/manifest.json` to include it as a dependency. See the example below on how to reference it.
 
 ```
 {
@@ -29,6 +38,9 @@ Using this library in your project can be done in two ways:
 	}
 }
 ```
+
+### Install via classic `.UnityPackage`
+The latest release can be found [here](https://github.com/jeffcampbellmakesgames/unity-curves/releases) as a UnityPackage file that can be downloaded and imported directly into your project's Assets folder.
 
 ## Usage
 
