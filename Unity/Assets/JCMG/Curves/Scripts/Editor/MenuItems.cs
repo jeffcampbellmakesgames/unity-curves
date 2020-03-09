@@ -20,5 +20,27 @@ namespace JCMG.Curves.Editor
 
 			EditorGUIUtility.PingObject(obj.gameObject);
 		}
+
+		[MenuItem("Tools/JCMG/Curves/Submit bug or feature request")]
+		internal static void OpenURLToGitHubIssuesSection()
+		{
+			const string GITHUB_ISSUES_URL = "https://github.com/jeffcampbellmakesgames/unity-curves/issues";
+
+			Application.OpenURL(GITHUB_ISSUES_URL);
+		}
+
+		[MenuItem("Tools/JCMG/Curves/Donate to support development")]
+		internal static void OpenURLToKoFi()
+		{
+			const string KOFI_URL = "https://ko-fi.com/stampyturtle";
+
+			Application.OpenURL(KOFI_URL);
+		}
+
+		[MenuItem("Tools/JCMG/Curves/About")]
+		internal static void OpenAboutModalDialog()
+		{
+			AboutWindow.View();
+		}
 	}
 }
