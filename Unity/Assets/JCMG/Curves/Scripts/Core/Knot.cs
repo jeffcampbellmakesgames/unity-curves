@@ -11,12 +11,12 @@ namespace JCMG.Curves
 		/// <summary>
 		/// Returns true if a custom rotation has been specified, otherwise false.
 		/// </summary>
-		public bool IsUsingRotation => rotation != null;
+		public readonly bool IsUsingRotation => rotation != null;
 
 		/// <summary>
 		/// Returns true if a handles are auto-adjusted, otherwise false.
 		/// </summary>
-		public bool IsUsingAutoHandles => Math.Abs(auto) > .00001f;
+		public readonly bool IsUsingAutoHandles => Math.Abs(auto) > .00001f;
 
 		/// <summary>
 		/// Position of the knot local to spline.

@@ -12,7 +12,7 @@ namespace JCMG.Curves
 		/// <summary>
 		/// Returns the <see cref="Quaternion"/> value.
 		/// </summary>
-		public Quaternion Value
+		public readonly Quaternion Value
 		{
 			get { return rotation; }
 		}
@@ -20,7 +20,7 @@ namespace JCMG.Curves
 		/// <summary>
 		/// Returns the <see cref="Quaternion"/> value if present, otherwise null.
 		/// </summary>
-		public Quaternion? NullableValue
+		public readonly Quaternion? NullableValue
 		{
 			get { return hasValue ? (Quaternion?)rotation : null; }
 		}
@@ -28,7 +28,7 @@ namespace JCMG.Curves
 		/// <summary>
 		/// Returns true if a <see cref="Quaternion"/> value is present, otherwise false.
 		/// </summary>
-		public bool HasValue
+		public readonly bool HasValue
 		{
 			get { return hasValue; }
 		}
